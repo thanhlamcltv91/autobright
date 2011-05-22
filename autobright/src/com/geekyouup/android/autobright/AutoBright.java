@@ -11,6 +11,7 @@ import android.widget.Toast;
 public class AutoBright extends Activity {
 	
 	private static final String SCREEN_BRIGHTNESS_MODE = "screen_brightness_mode";
+	private static final int SCREEN_MODE_MANUAL = 0;
 	private static final int SCREEN_MODE_AUTO = 1;
 	
     /** Called when the activity is first created. */
@@ -28,7 +29,8 @@ public class AutoBright extends Activity {
         	boolean autoBrightOn = (Settings.System.getInt(cr,SCREEN_BRIGHTNESS_MODE,-1)==SCREEN_MODE_AUTO);
         	if(autoBrightOn)
         	{
-        		Toast.makeText(this, "'Automatic Brightness' already on", Toast.LENGTH_SHORT).show();
+        		Settings.System.putInt(cr, SCREEN_BRIGHTNESS_MODE, SCREEN_MODE_MANUAL);
+        		Toast.makeText(this, "Disabling 'Automatic Brightness'", Toast.LENGTH_SHORT).show();
         	}else
         	{
         		Settings.System.putInt(cr, SCREEN_BRIGHTNESS_MODE, SCREEN_MODE_AUTO);
