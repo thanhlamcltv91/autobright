@@ -1,0 +1,1 @@
+Android Application for Toggling Auto-Brightness on
